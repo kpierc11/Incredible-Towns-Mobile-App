@@ -1,8 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import AuthNavigation from './components/navigation/AuthNavigation'
+import { NavigationContainer } from '@react-navigation/native';
 import firebase from "firebase";
 import "firebase/auth";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { NativeBaseProvider } from "native-base";
 //import "firebase/database";
 //import "firebase/firestore";
 //import "firebase/functions";
@@ -36,7 +39,11 @@ if (!firebase.apps.length) {
 export default function App() {
 
   return (
-    <AuthNavigation/>
+    <NativeBaseProvider>
+      <NavigationContainer>
+        <AuthNavigation/>
+      </NavigationContainer>
+    </NativeBaseProvider>
   );
 }
 
