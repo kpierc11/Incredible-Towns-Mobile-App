@@ -22,7 +22,7 @@ function HomeScreen() {
   <ScrollView>
   <CustomCard
     uri={
-      "../../assets/icon_claim_your_business.svg"
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg/1200px-Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg"
     }
     heading={
       "Find A Local Business"
@@ -33,7 +33,7 @@ function HomeScreen() {
   ></CustomCard>
   <CustomCard
     uri={
-      "https://sample-example.nativebase.io/static/media/dawki-river.ebbf5434.png"
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg/1200px-Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg"
     }
     heading={
       "The Stunning Dawki River in Meghalaya is So Clear That Boats AppearFloating in Air"
@@ -44,7 +44,7 @@ function HomeScreen() {
   ></CustomCard>
   <CustomCard
     uri={
-      "https://sample-example.nativebase.io/static/media/dawki-river.ebbf5434.png"
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg/1200px-Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg"
     }
     heading={
       "The Stunning Dawki River in Meghalaya is So Clear That Boats AppearFloating in Air"
@@ -55,7 +55,7 @@ function HomeScreen() {
   ></CustomCard>
   <CustomCard
     uri={
-      "https://sample-example.nativebase.io/static/media/dawki-river.ebbf5434.png"
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg/1200px-Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg"
     }
     heading={
       "The Stunning Dawki River in Meghalaya is So Clear That Boats AppearFloating in Air"
