@@ -1,24 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   VStack,
   Input,
-  Button,
-  IconButton,
   Icon,
-  Text,
-  NativeBaseProvider,
   Center,
   Box,
 } from "native-base";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
+
 
 function SearchBar() {
+  const [searchData , setSearchData] = useState('');
+
+  console.log(searchData);
+
   return (
     <VStack space={8} width="100%" marginTop="20px" marginBottom="20px">
       <Center flex={1}>
         <VStack width="90%" space={2}>
           <Input
+            onChangeText={(searchData)=>{setSearchData(searchData)}}
             placeholder="Search Businesses"
             bg="#fff"
             width="100%"
