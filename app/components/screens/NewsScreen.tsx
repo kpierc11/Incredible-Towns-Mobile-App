@@ -1,24 +1,17 @@
 import React from "react";
-import {
-  VStack,
-  HStack,
-  Avatar,
-  Image,
-  Text,
-  NativeBaseProvider,
-  AspectRatio,
-  Center,
-  Box,
-  Stack,
-  Heading,
-  ScrollView,
-} from "native-base";
-import CustomCard from "../ui/CustomCard";
+import { ScrollView } from "native-base";
+import NewsCard from "../ui/NewsCard";
 
 function NewsScreen() {
+  let date = new Date();
+  let month = String(date.getMonth());
+  let day = String(date.getDay());
+  let year = String(date.getFullYear());
+  let currentDate = month + "-" + day + "-" + year;
+
   return (
     <ScrollView>
-      <CustomCard
+      <NewsCard
         uri={
           "https://sample-example.nativebase.io/static/media/dawki-river.ebbf5434.png"
         }
@@ -28,8 +21,9 @@ function NewsScreen() {
         text={
           "With lush green meadows, rivers clear as crystal, pine-covered hills,gorgeous waterfalls, lakes and majestic forests, the mesmerizing Meghalaya is truly a Nature lover’s paradise…"
         }
-      ></CustomCard>
-      <CustomCard
+        date={currentDate}
+      ></NewsCard>
+      <NewsCard
         uri={
           "https://sample-example.nativebase.io/static/media/dawki-river.ebbf5434.png"
         }
@@ -39,8 +33,9 @@ function NewsScreen() {
         text={
           "With lush green meadows, rivers clear as crystal, pine-covered hills,gorgeous waterfalls, lakes and majestic forests, the mesmerizing Meghalaya is truly a Nature lover’s paradise…"
         }
-      ></CustomCard>
-      <CustomCard
+        date={currentDate}
+      ></NewsCard>
+      <NewsCard
         uri={
           "https://sample-example.nativebase.io/static/media/dawki-river.ebbf5434.png"
         }
@@ -50,8 +45,9 @@ function NewsScreen() {
         text={
           "With lush green meadows, rivers clear as crystal, pine-covered hills,gorgeous waterfalls, lakes and majestic forests, the mesmerizing Meghalaya is truly a Nature lover’s paradise…"
         }
-      ></CustomCard>
-      <CustomCard
+        date={currentDate}
+      ></NewsCard>
+      <NewsCard
         uri={
           "https://sample-example.nativebase.io/static/media/dawki-river.ebbf5434.png"
         }
@@ -61,7 +57,8 @@ function NewsScreen() {
         text={
           "With lush green meadows, rivers clear as crystal, pine-covered hills,gorgeous waterfalls, lakes and majestic forests, the mesmerizing Meghalaya is truly a Nature lover’s paradise…"
         }
-      ></CustomCard>
+        date={currentDate}
+      ></NewsCard>
     </ScrollView>
   );
 }

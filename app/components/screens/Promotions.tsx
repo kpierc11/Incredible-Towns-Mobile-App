@@ -1,12 +1,12 @@
-import React from 'react';
-import {View,Text} from 'react-native';
+import React from "react";
+import { View, Text } from "react-native";
 
-function Promotions(){
-    return(
-        <View>
-            <Text>Promotions Page</Text>
-        </View>
-    )
+function Promotions() {
+  return (
+    <View>
+      <Text>Promotions Page</Text>
+    </View>
+  );
 }
 
-export default Promotions
+export default Promotions;

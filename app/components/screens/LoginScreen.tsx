@@ -6,21 +6,13 @@ import {
   Image,
   TextInput,
   Button,
-  ImageBackground,
-  Alert,
   Linking,
-  ScrollView,
-  Keyboard,
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
 import "firebase/auth";
-import firebase from "firebase";
 import "firebase/firestore";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { url } from "inspector";
-import { useContext } from "react";
-import { AuthContext } from "../authcontext/AuthContext";
+
 import SignUp from "../SignUp";
 
 function LoginScreen() {

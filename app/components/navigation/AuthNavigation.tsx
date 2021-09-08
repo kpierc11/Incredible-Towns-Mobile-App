@@ -15,8 +15,8 @@ function AuthNavigation() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        headerStyle:{backgroundColor:'#2b523d'},
-        headerTitleStyle:{color:'white'},
+        headerStyle: { backgroundColor: "#2b523d" },
+        headerTitleStyle: { color: "white" },
         tabBarIcon: ({ focused, color, size }) => {
           let iconName = "";
 

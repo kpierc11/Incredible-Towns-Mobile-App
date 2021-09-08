@@ -24,4 +24,4 @@ function SignUp(email: string, password: string) {
     });
 }
 
-export default SignUp
+export default SignUp;
