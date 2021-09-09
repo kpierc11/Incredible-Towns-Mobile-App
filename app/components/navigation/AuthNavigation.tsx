@@ -3,9 +3,9 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/HomeScreen";
 import NewsScreen from "../screens/NewsScreen";
-import Promotions from "../screens/Promotions";
-import Directory from "../screens/Directory";
-import Events from "../screens/Events";
+import PromotionScreen from "../screens/PromotionScreen";
+import EventScreen from "../screens/EventScreen";
+import DirectoryScreen from "../screens/DirectoryScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -41,9 +41,9 @@ function AuthNavigation() {
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="News" component={NewsScreen} />
-      <Tab.Screen name="Events" component={Events} />
-      <Tab.Screen name="Promotions" component={Promotions} />
-      <Tab.Screen name="Directory" component={Directory} />
+      <Tab.Screen name="Events" component={EventScreen} />
+      <Tab.Screen name="Promotions" component={PromotionScreen} />
+      <Tab.Screen name="Directory" component={DirectoryScreen} />
     </Tab.Navigator>
   );
 }
