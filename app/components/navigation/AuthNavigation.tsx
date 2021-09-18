@@ -1,15 +1,29 @@
 import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../screens/HomeScreen";
 import NewsScreen from "../screens/NewsScreen";
 import PromotionScreen from "../screens/PromotionScreen";
 import EventScreen from "../screens/EventScreen";
 import DirectoryScreen from "../screens/DirectoryScreen";
+import BusinessScreen from "../screens/BusinessScreen";
+
+
+
+const DirectoryStack = createNativeStackNavigator();
+
+function DirectoryStackScreen() {
+  return (
+    <DirectoryStack.Navigator>
+      <DirectoryStack.Screen name="Incredible Towns Partners" component={DirectoryScreen}/>
+      <DirectoryStack.Screen name="Business" component={BusinessScreen} />
+    </DirectoryStack.Navigator>
+  );
+}
 
 const Tab = createBottomTabNavigator();
-
-const isSignedIn = true;
 
 function AuthNavigation() {
   return (
@@ -43,9 +57,9 @@ function AuthNavigation() {
       <Tab.Screen name="News" component={NewsScreen} />
       <Tab.Screen name="Events" component={EventScreen} />
       <Tab.Screen name="Promotions" component={PromotionScreen} />
-      <Tab.Screen name="Directory" component={DirectoryScreen} />
+      <Tab.Screen name="Directory" component={DirectoryStackScreen} />
     </Tab.Navigator>
   );
 }
 
-export default AuthNavigation;
+export default AuthNavigation

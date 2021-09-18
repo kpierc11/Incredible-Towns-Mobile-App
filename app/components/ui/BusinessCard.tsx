@@ -2,41 +2,38 @@ import React from "react";
 import { Image, Text, Center, Box, Stack, Heading, Button } from "native-base";
 
 interface ICustomCard {
-  uri: string;
-  heading: string;
-  text: string;
-  date?: string;
+  image: string;
+  name: string;
+  description: string;
+  location: string;
 }
 
-function DirectoryCard({ uri, heading, text, date }: ICustomCard) {
+function BusinessCard({ image, name ,description,location }: ICustomCard) {
   return (
     <Center flex={1}>
       <Box
-        bg="white"
-        shadow={2}
+       bg={'white'}
+        shadow={5}
         rounded="lg"
-        maxWidth="100%"
-        width="350px"
-        display="flex"
-        justifyContent="center"
-        marginBottom="30px"
-        marginTop="20px"
+        height='100%'
+        width='90%'
+      
       >
         <Image
           source={{
-            uri: uri,
+            uri: image,
           }}
           alt="image base"
-          resizeMode="cover"
-          height={150}
-          roundedTop="lg"
+          resizeMode="contain"
+          height={'100%'}
+          roundedTop="md"
         />
-        <Stack space={4} p={[4, 4, 8]}>
+        <Stack space={10} p={[4, 4, 8]}>
           <Heading size={["md", "lg", "md"]} noOfLines={2}>
-            {heading}
+            {name}
           </Heading>
           <Text lineHeight={[5, 5, 7]} noOfLines={4} color="gray.700">
-            {text}
+            {description}
           </Text>
           <Button
             onPress={() => console.log("hello world")}
@@ -50,4 +47,4 @@ function DirectoryCard({ uri, heading, text, date }: ICustomCard) {
   );
 }
 
-export default DirectoryCard;
+export default BusinessCard;
