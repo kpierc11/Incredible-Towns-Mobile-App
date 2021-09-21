@@ -9,6 +9,7 @@ import PromotionScreen from "../screens/PromotionScreen";
 import EventScreen from "../screens/EventScreen";
 import DirectoryScreen from "../screens/DirectoryScreen";
 import BusinessScreen from "../screens/BusinessScreen";
+import HeaderBar from "../ui/headerBar/HeaderBar";
 
 
 

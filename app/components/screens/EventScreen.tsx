@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, Dimensions } from "react-native";
 import Carousel from "react-native-snap-carousel";
-import EventCard from "../ui/EventCard";
+import EventCard from "../ui/cards/EventCard";
+
 
 
 function Events() {

@@ -1,20 +1,12 @@
-import React, {
-  ReactComponentElement,
-  ReactElement,
-  useEffect,
-  useState,
-} from "react";
-import { ScrollView, View } from "native-base";
-import SearchBar from "../ui/SearchBar";
+import React, { useEffect, useState } from "react";
+import { ScrollView } from "native-base";
+import SearchBar from "../ui/searchBar/SearchBar";
 import firebaseConfig from "../../firebase";
-import DirectoryCard from "../ui/DirectoryCard";
+import DirectoryCard from "../ui/cards/DirectoryCard";
 import Loading from "../ui/Loading";
-import BusinessScreen from "./BusinessScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import {StyleSheet} from 'react-native';
-import { TouchableHighlight } from "react-native-gesture-handler";
+import { StyleSheet } from "react-native";
 import { Pressable } from "react-native";
-import { shadow } from "styled-system";
 
 function Directory({ navigation }: any) {
   const [directoryCards, setDirectoryCards]: any = useState([]);
@@ -27,19 +19,19 @@ function Directory({ navigation }: any) {
       justifyContent: "center",
     },
     text: {
-      fontSize: 16
+      fontSize: 16,
     },
     wrapperCustom: {
       borderRadius: 8,
-      padding: 6
+      padding: 6,
     },
     logBox: {
       padding: 20,
       margin: 10,
       borderWidth: StyleSheet.hairlineWidth,
-      borderColor: '#f0f0f0',
-      backgroundColor: '#f9f9f9'
-    }
+      borderColor: "#f0f0f0",
+      backgroundColor: "#f9f9f9",
+    },
   });
 
   useEffect(() => {
@@ -61,16 +53,6 @@ function Directory({ navigation }: any) {
                   location: doc.get("location"),
                 });
               }}
-              style={({ pressed }) => [
-                {
-                  backgroundColor: pressed
-                    ? 'rgb(210, 230, 255)'
-                    : 'white',
-                    
-                    
-                },
-                styles.wrapperCustom
-              ]}
             >
               <DirectoryCard
                 key={doc.get("name")}

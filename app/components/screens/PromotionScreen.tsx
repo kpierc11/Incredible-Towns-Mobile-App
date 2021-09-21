@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, ScrollView } from "react-native";
-import PromotionCard from "../ui/PromotionCard";
-import SearchBar from "../ui/SearchBar";
+import PromotionCard from "../ui/cards/PromotionCard";
+import SearchBar from "../ui/searchBar/SearchBar";
 
 function Promotions() {
   return (

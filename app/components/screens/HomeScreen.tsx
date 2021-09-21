@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollView } from "native-base";
-import HomeCard from "../ui/HomeCard";
+import HomeCard from "../ui/cards/HomeCard";
+
 
 function HomeScreen() {
   return (

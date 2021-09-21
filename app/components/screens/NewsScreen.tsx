@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollView } from "native-base";
-import NewsCard from "../ui/NewsCard";
+import NewsCard from "../ui/cards/NewsCard";
+
 
 function NewsScreen() {
   let date = new Date();
