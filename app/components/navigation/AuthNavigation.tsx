@@ -1,7 +1,6 @@
 import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../screens/HomeScreen";
 import NewsScreen from "../screens/NewsScreen";
@@ -9,18 +8,30 @@ import PromotionScreen from "../screens/PromotionScreen";
 import EventScreen from "../screens/EventScreen";
 import DirectoryScreen from "../screens/DirectoryScreen";
 import BusinessScreen from "../screens/BusinessScreen";
-import HeaderBar from "../ui/headerBar/HeaderBar";
-
-
+import NewsArticleScreen from "../screens/NewsArticleScreen";
 
 const DirectoryStack = createNativeStackNavigator();
 
 function DirectoryStackScreen() {
   return (
     <DirectoryStack.Navigator>
-      <DirectoryStack.Screen name="Incredible Towns Partners" component={DirectoryScreen}/>
+      <DirectoryStack.Screen
+        name="Incredible Towns Partners"
+        component={DirectoryScreen}
+      />
       <DirectoryStack.Screen name="Business" component={BusinessScreen} />
     </DirectoryStack.Navigator>
+  );
+}
+
+const NewsStack = createNativeStackNavigator();
+
+function NewsStackScreen() {
+  return (
+    <NewsStack.Navigator>
+      <NewsStack.Screen name="NewsArticles" component={NewsScreen} />
+      <NewsStack.Screen name="Articles" component={NewsArticleScreen} />
+    </NewsStack.Navigator>
   );
 }
 
@@ -55,7 +66,7 @@ function AuthNavigation() {
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="News" component={NewsScreen} />
+      <Tab.Screen name="News" component={NewsStackScreen} />
       <Tab.Screen name="Events" component={EventScreen} />
       <Tab.Screen name="Promotions" component={PromotionScreen} />
       <Tab.Screen name="Directory" component={DirectoryStackScreen} />
@@ -63,4 +74,4 @@ function AuthNavigation() {
   );
 }
 
-export default AuthNavigation
+export default AuthNavigation;

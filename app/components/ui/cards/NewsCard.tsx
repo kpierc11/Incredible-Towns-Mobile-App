@@ -2,17 +2,17 @@ import React from "react";
 import { Image, Text, Center, Box, Stack, Heading } from "native-base";
 
 interface ICustomCard {
-  uri: string;
-  heading: string;
-  text: string;
-  date?: string;
+  date: string;
+  description: string;
+  image: string;
+  title: string;
 }
 
-function NewsCard({ uri, heading, text, date }: ICustomCard) {
+function NewsCard({ date, description, image, title }: ICustomCard) {
   return (
     <Center flex={1}>
       <Box
-        bg="white"
+        bg="blue"
         shadow={2}
         rounded="lg"
         maxWidth="90%"
@@ -20,10 +20,11 @@ function NewsCard({ uri, heading, text, date }: ICustomCard) {
         justifyContent="center"
         marginBottom="30px"
         marginTop="20px"
+        height='200px'
       >
         <Image
           source={{
-            uri: uri,
+            uri: image,
           }}
           alt="image base"
           resizeMode="cover"
@@ -33,10 +34,10 @@ function NewsCard({ uri, heading, text, date }: ICustomCard) {
         <Stack space={4} p={[4, 4, 8]}>
           <Text color="gray.400">{date}</Text>
           <Heading size={["md", "lg", "md"]} noOfLines={2}>
-            {heading}
+            {title}
           </Heading>
-          <Text lineHeight={[5, 5, 7]} noOfLines={4} color="gray.700">
-            {text}
+          <Text lineHeight={[5, 5, 7]} noOfLines={2} color="gray.700">
+            {description}
           </Text>
         </Stack>
       </Box>

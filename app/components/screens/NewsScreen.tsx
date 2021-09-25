@@ -1,67 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollView } from "native-base";
+import firebaseConfig from "../../firebase";
+import Loading from "../ui/Loading";
+import { Pressable } from "react-native";
 import NewsCard from "../ui/cards/NewsCard";
 
+function NewsScreen({ navigation }: any) {
+  const [newsCards, setNewsCards]: any = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
-function NewsScreen() {
-  let date = new Date();
-  let month = String(date.getMonth());
-  let day = String(date.getDay());
-  let year = String(date.getFullYear());
-  let currentDate = month + "-" + day + "-" + year;
+  useEffect(() => {
+    firebaseConfig
+      .firestore()
+      .collection('News')
+      .get()
+      .then((snapshot) => {
+          const data = snapshot.docs.map((doc) => {
+            return (
+              <Pressable
+                key={doc.id}
+                delayLongPress={180}
+                onLongPress={() => {
+                  navigation.navigate("Articles", {
+                    date: doc.get("date"),
+                    description: doc.get("description"),
+                    image: doc.get("image"),
+                    title: doc.get("title"),
+                  });
+                }}
+              >
+                <NewsCard
+                  key={doc.id}
+                  date={doc.get("date")}
+                  description={doc.get("description")}
+                  image={doc.get("description")}
+                  title={doc.get("title")}
+                />
+              </Pressable>
+            );
+          });
+          setNewsCards(data);
+          setLoading(false);
+      });
+  }, []);
 
-  return (
-    <ScrollView>
-      <NewsCard
-        uri={
-          "https://sample-example.nativebase.io/static/media/dawki-river.ebbf5434.png"
-        }
-        heading={
-          "The Stunning Dawki River in Meghalaya is So Clear That Boats AppearFloating in Air"
-        }
-        text={
-          "With lush green meadows, rivers clear as crystal, pine-covered hills,gorgeous waterfalls, lakes and majestic forests, the mesmerizing Meghalaya is truly a Nature lover’s paradise…"
-        }
-        date={currentDate}
-      ></NewsCard>
-      <NewsCard
-        uri={
-          "https://sample-example.nativebase.io/static/media/dawki-river.ebbf5434.png"
-        }
-        heading={
-          "The Stunning Dawki River in Meghalaya is So Clear That Boats AppearFloating in Air"
-        }
-        text={
-          "With lush green meadows, rivers clear as crystal, pine-covered hills,gorgeous waterfalls, lakes and majestic forests, the mesmerizing Meghalaya is truly a Nature lover’s paradise…"
-        }
-        date={currentDate}
-      ></NewsCard>
-      <NewsCard
-        uri={
-          "https://sample-example.nativebase.io/static/media/dawki-river.ebbf5434.png"
-        }
-        heading={
-          "The Stunning Dawki River in Meghalaya is So Clear That Boats AppearFloating in Air"
-        }
-        text={
-          "With lush green meadows, rivers clear as crystal, pine-covered hills,gorgeous waterfalls, lakes and majestic forests, the mesmerizing Meghalaya is truly a Nature lover’s paradise…"
-        }
-        date={currentDate}
-      ></NewsCard>
-      <NewsCard
-        uri={
-          "https://sample-example.nativebase.io/static/media/dawki-river.ebbf5434.png"
-        }
-        heading={
-          "The Stunning Dawki River in Meghalaya is So Clear That Boats AppearFloating in Air"
-        }
-        text={
-          "With lush green meadows, rivers clear as crystal, pine-covered hills,gorgeous waterfalls, lakes and majestic forests, the mesmerizing Meghalaya is truly a Nature lover’s paradise…"
-        }
-        date={currentDate}
-      ></NewsCard>
-    </ScrollView>
-  );
+  if (isLoading) {
+    return <Loading />;
+  } else {
+    return <ScrollView>{newsCards}</ScrollView>;
+  }
 }
 
 export default NewsScreen;

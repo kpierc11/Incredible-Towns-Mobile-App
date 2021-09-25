@@ -21,6 +21,7 @@ function DirectoryCard({ uri, heading, text, date }: ICustomCard) {
         justifyContent="center"
         marginBottom="30px"
         marginTop="20px"
+    
       >
         <Image
           source={{
@@ -28,7 +29,7 @@ function DirectoryCard({ uri, heading, text, date }: ICustomCard) {
           }}
           alt="image base"
           resizeMode="cover"
-          height={150}
+          height={200}
           roundedTop="lg"
         />
         <Stack space={4} p={[4, 4, 8]}>
@@ -38,12 +39,6 @@ function DirectoryCard({ uri, heading, text, date }: ICustomCard) {
           <Text lineHeight={[5, 5, 7]} noOfLines={4} color="gray.700">
             {text}
           </Text>
-          <Button
-            onPress={() => console.log("hello world")}
-            colorScheme={"green"}
-          >
-            Learn More
-          </Button>
         </Stack>
       </Box>
     </Center>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { VStack, Input, Icon, Center, Box } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
+import CategoryModal from "../modal/CategoryModal";
 
 function SearchBar() {
   const [searchData, setSearchData] = useState("");
@@ -43,7 +44,8 @@ function SearchBar() {
                 m={2}
                 size={6}
                 color="gray.400"
-                as={<MaterialIcons name="mic" />}
+                as={<MaterialIcons name="filter-list" />}
+                onPress={()=>{<CategoryModal state={true}/>}}
               />
             }
           />
