@@ -9,6 +9,9 @@ import EventScreen from "../screens/EventScreen";
 import DirectoryScreen from "../screens/DirectoryScreen";
 import BusinessScreen from "../screens/BusinessScreen";
 import NewsArticleScreen from "../screens/NewsArticleScreen";
+import HeaderBar from "../ui/headerBar/HeaderBar";
+import Avatar from "../ui/avatar/Avatar";
+import AccountAvatar from "../ui/avatar/Avatar";
 
 const DirectoryStack = createNativeStackNavigator();
 
@@ -35,13 +38,24 @@ function NewsStackScreen() {
   );
 }
 
+const EventsStack = createNativeStackNavigator();
+
+function EventsStackScreen() {
+  return (
+    <EventsStack.Navigator>
+      <EventsStack.Screen name="NewsArticles" component={EventScreen} />
+      <EventsStack.Screen name="Articles" component={NewsArticleScreen} />
+    </EventsStack.Navigator>
+  );
+}
+
 const Tab = createBottomTabNavigator();
 
 function AuthNavigation() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        headerStyle: { backgroundColor: "#2b523d" },
+        headerStyle: { backgroundColor: "#2b523d", height:120 },
         headerTitleStyle: { color: "white" },
         tabBarIcon: ({ focused, color, size }) => {
           let iconName = "";
@@ -65,7 +79,7 @@ function AuthNavigation() {
         tabBarInactiveTintColor: "#2b523d",
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Home" component={HomeScreen} options={{headerRight:(props) => <AccountAvatar {...props}/>}}/>
       <Tab.Screen name="News" component={NewsStackScreen} />
       <Tab.Screen name="Events" component={EventScreen} />
       <Tab.Screen name="Promotions" component={PromotionScreen} />

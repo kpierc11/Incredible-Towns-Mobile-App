@@ -15,11 +15,9 @@ function HomeCard({ uri, heading, text, date }: ICustomCard) {
         bg="white"
         shadow={2}
         rounded="lg"
-        maxWidth="90%"
-        display="flex"
         justifyContent="center"
-        marginBottom="30px"
-        marginTop="20px"
+       height='auto' 
+       
       >
         <Image
           source={{
@@ -37,12 +35,7 @@ function HomeCard({ uri, heading, text, date }: ICustomCard) {
           <Text lineHeight={[5, 5, 7]} noOfLines={4} color="gray.700">
             {text}
           </Text>
-          <Button
-            onPress={() => console.log("hello world")}
-            colorScheme={"green"}
-          >
-            Learn More
-          </Button>
+          
         </Stack>
       </Box>
     </Center>

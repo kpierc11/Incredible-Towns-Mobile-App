@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { ScrollView } from "native-base";
 import SearchBar from "../ui/searchBar/SearchBar";
 import firebaseConfig from "../../firebase";
 import DirectoryCard from "../ui/cards/DirectoryCard";
 import Loading from "../ui/Loading";
-import { StyleSheet } from "react-native";
+import { RefreshControl, StyleSheet,Text } from "react-native";
 import { Pressable } from "react-native";
 
 function Directory({ navigation }: any) {
   const [directoryCards, setDirectoryCards]: any = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
   const styles = StyleSheet.create({
     container: {
@@ -36,7 +37,8 @@ function Directory({ navigation }: any) {
     firebaseConfig
       .firestore()
       .collection("Business")
-      .get()
+      .orderBy("name")
+      .get({source:'default'})
       .then((snapshot) => {
         if (!snapshot.empty) {
           const data = snapshot.docs.map((doc) => {
@@ -64,17 +66,22 @@ function Directory({ navigation }: any) {
           });
           setDirectoryCards(data);
           setLoading(false);
+          setRefreshing(false);
         } else {
           console.log("This document does not exist.");
         }
       });
-  }, []);
+  }, [refreshing]);
 
   if (isLoading) {
     return <Loading />;
   } else {
     return (
-      <ScrollView>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={()=> setRefreshing(true)} />
+        }
+      >
         <SearchBar />
         {directoryCards}
       </ScrollView>
