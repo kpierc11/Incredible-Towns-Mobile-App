@@ -33,7 +33,7 @@ function UpcomingEventsCard() {
         </AspectRatio>
 
         <Text bold position="absolute" color="coolGray.50" top="0" m="4">
-          NEWS
+          
         </Text>
 
         <Stack space="2" p="4">

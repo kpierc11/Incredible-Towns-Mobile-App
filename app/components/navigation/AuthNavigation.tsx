@@ -18,6 +18,7 @@ import { useWindowDimensions } from "react-native";
 import AccountDrawer from "./AccountDrawer";
 import { stringify } from "querystring";
 import HeaderTitle from "../ui/headerTitle/HeaderTitle";
+import SearchBar from "../ui/searchBar/SearchBar";
 
 const DirectoryStack = createNativeStackNavigator();
 
@@ -121,16 +122,14 @@ function AuthNavigation() {
           shadowColor: "black",
         },
         headerTintColor: "white",
-        drawerIcon: ({ color = "#FFFFFF", size = 50 }) => (
-          <Ionicons name="menu-outline" size={size} color={color} />
-        ),
+        
       }}
-      drawerContent={(props) => <AccountDrawer {...props} />}
+      //drawerContent={(props) => <AccountDrawer {...props} />}
     >
       <Drawer.Screen
         name="Incredible Towns"
         component={TabNavigation}
-        options={{ headerTitle: (props) => <HeaderTitle></HeaderTitle> }}
+        options={{ headerRight: (props) => <HeaderTitle></HeaderTitle>, }}
       />
     </Drawer.Navigator>
   );

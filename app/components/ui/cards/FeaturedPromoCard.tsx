@@ -19,7 +19,7 @@ function FeaturedPromoCard() {
       <Box justifyContent="space-between" height={"100%"} width={"100%"}>
         <Image
           source={{
-            uri: "https://1000logos.net/wp-content/uploads/2017/03/McDonalds-logo.png",
+            uri: "https://www.kbjacks.com/sites/default/files/logo-kickback-jacks.png",
           }}
           width={"100%"}
           alt="Alternate Text"
@@ -31,7 +31,7 @@ function FeaturedPromoCard() {
               10% off
             </Heading>
             <Text fontSize="xs" fontWeight="500" ml="-0.5" mt="-1">
-              Macdonalds
+              Kick Back Jacks
             </Text>
           </Stack>
           <Text fontWeight="400">March 22 - 30 2021</Text>

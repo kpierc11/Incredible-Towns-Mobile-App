@@ -4,7 +4,6 @@
     "slug": "incredible-towns-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./img/assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -24,9 +23,6 @@
         "foregroundImage": "./img/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
-    },
-    "web": {
-      "favicon": "./img/assets/favicon.png"
     },
     "description": ""
   }

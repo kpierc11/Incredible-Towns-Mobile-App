@@ -5,7 +5,7 @@ import images from "../../../assets/images";
 function HeaderTitle() {
   return (
     <Image
-      style={{ width: 75, height: 75, resizeMode:'contain' }}
+      style={{ width: 75, height: 75, marginRight:10, resizeMode:'contain' }}
       source={images.logoImage}
     />
   );

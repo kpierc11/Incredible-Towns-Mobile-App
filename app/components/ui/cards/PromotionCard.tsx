@@ -12,7 +12,11 @@ import {
   View,
 } from "native-base";
 
-function PromotionCard() {
+interface IPromo {
+  logo:string;
+}
+
+function PromotionCard({logo}:IPromo) {
   return (
     <View flexBasis={"50%"}>
       <Box
@@ -30,7 +34,7 @@ function PromotionCard() {
         <Box justifyContent="space-between" height={"100%"} width={"100%"}>
           <Image
             source={{
-              uri: "https://1000logos.net/wp-content/uploads/2017/03/McDonalds-logo.png",
+               uri:logo
             }}
             width={"100%"}
             alt="Alternate Text"

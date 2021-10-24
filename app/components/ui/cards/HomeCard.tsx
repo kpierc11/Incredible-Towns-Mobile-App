@@ -42,18 +42,19 @@ function HomeCard({ image, heading, text, subText, buttonTitle }: ICustomCard) {
           </Heading>
         </Stack>
 
-        <HStack px="1">
-          <Ionicons
+        <HStack space="3" px="4" pb="4">
+           <Ionicons
             name="chevron-forward-circle-outline"
             size={20}
             color={"emerald.800"}
           />
-          <Button
-            title={buttonTitle}
-            color="black"
-            onPress={() => {}}
-            accessibilityLabel="Learn more about this purple button"
-          ></Button>
+
+          <Text
+            _light={{ color: "emerald.800" }}
+            _dark={{ color: "emerald.300" }}
+          >
+           {buttonTitle}
+          </Text>
         </HStack>
 
         <HStack alignItems="center" space={4}>
