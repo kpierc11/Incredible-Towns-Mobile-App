@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView } from "native-base";
+import { ScrollView } from "react-native";
 import firebaseConfig from "../../firebase";
 import Loading from "../ui/Loading";
 import { Pressable } from "react-native";
 import NewsCard from "../ui/cards/NewsCard";
 
 function NewsScreen({ navigation }: any) {
-  const [newsCards, setNewsCards]: any = useState([]);
+  let newsCards:any[] = [];
   const [isLoading, setLoading] = useState(true);
 
+  const newsRef = firebaseConfig.firestore().collection('News').get();
+
   useEffect(() => {
-    firebaseConfig
-      .firestore()
-      .collection('News')
-      .get()
-      .then((snapshot) => {
-          const data = snapshot.docs.map((doc) => {
+    newsRef
+      .then((querySnapshot) => {
+          const data = querySnapshot.docs.map((doc) => {
             return (
               <Pressable
                 key={doc.id}
@@ -39,7 +38,7 @@ function NewsScreen({ navigation }: any) {
               </Pressable>
             );
           });
-          setNewsCards(data);
+          newsCards= data;
           setLoading(false);
       });
   }, []);

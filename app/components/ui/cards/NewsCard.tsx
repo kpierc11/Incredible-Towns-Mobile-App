@@ -12,15 +12,16 @@ function NewsCard({ date, description, image, title }: ICustomCard) {
   return (
     <Center flex={1}>
       <Box
-        bg="blue"
-        shadow={2}
-        rounded="lg"
-        maxWidth="90%"
-        display="flex"
-        justifyContent="center"
-        marginBottom="30px"
-        marginTop="20px"
-        height='200px'
+         bg="white"
+         shadow={2}
+         rounded="lg"
+         maxWidth="100%"
+         width="350px"
+         display="flex"
+         justifyContent="center"
+         marginBottom="30px"
+         marginTop="20px"
+       
       >
         <Image
           source={{

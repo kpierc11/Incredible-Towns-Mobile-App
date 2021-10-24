@@ -1,44 +1,66 @@
 import React from "react";
-import { Image, Text, Center, Box, Stack, Heading, Button } from "native-base";
+import { Image, Text, Center, Box, Stack, Heading, HStack } from "native-base";
+
+import { View, Button } from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 interface ICustomCard {
-  uri: string;
+  image: string;
   heading: string;
-  text: string;
-  date?: string;
+  text?: string;
+  subText: string;
+  buttonTitle?: string;
 }
 
-function HomeCard({ uri, heading, text, date }: ICustomCard) {
+function HomeCard({ image, heading, text, subText, buttonTitle }: ICustomCard) {
   return (
-    <Center flex={1}>
-      <Box
-        bg="white"
-        shadow={2}
-        rounded="lg"
-        justifyContent="center"
-       height='auto' 
-       
-      >
-        <Image
-          source={{
-            uri: uri,
-          }}
-          alt="image base"
-          resizeMode="cover"
-          height={150}
-          roundedTop="md"
-        />
-        <Stack space={4} p={[4, 4, 8]}>
-          <Heading size={["md", "lg", "md"]} noOfLines={2}>
+    <Box
+      rounded="lg"
+      shadow={5}
+      _light={{ backgroundColor: "gray.50" }}
+      _dark={{ backgroundColor: "gray.700" }}
+      height={250}
+    >
+      <Box>
+        <Image source={image} height={150} resizeMode={"contain"} alt="image" />
+
+        <Center
+          bg="#2b523d"
+          _text={{ color: "white", fontWeight: "700", fontSize: "xs" }}
+          position="absolute"
+          bottom={0}
+          px="3"
+          py="1.5"
+        >
+          {subText}
+        </Center>
+      </Box>
+      <Stack p="4" space={3}>
+        <Stack space={3}>
+          <Heading size="md" ml="-1">
             {heading}
           </Heading>
-          <Text lineHeight={[5, 5, 7]} noOfLines={4} color="gray.700">
-            {text}
-          </Text>
-          
         </Stack>
-      </Box>
-    </Center>
+
+        <HStack px="1">
+          <Ionicons
+            name="chevron-forward-circle-outline"
+            size={20}
+            color={"emerald.800"}
+          />
+          <Button
+            title={buttonTitle}
+            color="black"
+            onPress={() => {}}
+            accessibilityLabel="Learn more about this purple button"
+          ></Button>
+        </HStack>
+
+        <HStack alignItems="center" space={4}>
+          <HStack alignItems="center"></HStack>
+        </HStack>
+      </Stack>
+    </Box>
   );
 }
 

@@ -45,7 +45,9 @@ function SearchBar() {
                 size={6}
                 color="gray.400"
                 as={<MaterialIcons name="filter-list" />}
-                onPress={()=>{<CategoryModal state={true}/>}}
+                onPress={() => {
+                  <CategoryModal modalState={true} />;
+                }}
               />
             }
           />

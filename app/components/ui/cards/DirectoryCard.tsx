@@ -1,5 +1,17 @@
 import React from "react";
-import { Image, Text, Center, Box, Stack, Heading, Button } from "native-base";
+import {
+  Image,
+  Text,
+  Center,
+  Box,
+  Stack,
+  Heading,
+  Button,
+  View,
+} from "native-base";
+import Ionicons from "@expo/vector-icons/build/Ionicons";
+import { SocialIcon } from "react-native-elements";
+import { Linking } from "react-native";
 
 interface ICustomCard {
   uri: string;
@@ -21,7 +33,6 @@ function DirectoryCard({ uri, heading, text, date }: ICustomCard) {
         justifyContent="center"
         marginBottom="30px"
         marginTop="20px"
-    
       >
         <Image
           source={{

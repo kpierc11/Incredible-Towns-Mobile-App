@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   NativeBaseProvider,
   Box,
@@ -7,11 +7,14 @@ import {
   Text,
   Pressable,
   Image,
-} from 'native-base';
+  Stack,
+  Heading,
+  View,
+} from "native-base";
 
 function PromotionCard() {
   return (
-    <NativeBaseProvider>
+    <View flexBasis={"50%"}>
       <Box
         bg="white"
         shadow={5}
@@ -19,52 +22,35 @@ function PromotionCard() {
         px={3}
         rounded="md"
         alignSelf="center"
-        width={375}
-        height={'90%'}
-        marginTop='20px'
-        marginBottom='20px'
-        maxWidth="100%"
+        width={"95%"}
+        height={300}
+        marginTop="20px"
+        marginBottom="20px"
       >
-        <HStack justifyContent="space-between">
-          <Box justifyContent="space-between">
-            <VStack space={2}>
-              <Text fontSize="sm" color="black">
-                Today @ 9PM
-              </Text>
-              <Text color="black" fontSize="lg">
-                Let's talk about avatar!
-              </Text>
-            </VStack>
-            <Pressable
-              rounded="sm"
-              bg="#2b523d"
-              alignSelf="flex-start"
-              py={2}
-              px={3}
-            >
-              <Text
-                textTransform="uppercase"
-                fontSize={'sm'}
-                fontWeight="bold"
-                color="white"
-              >
-                Get Coupon
-              </Text>
-            </Pressable>
-          </Box>
+        <Box justifyContent="space-between" height={"100%"} width={"100%"}>
           <Image
             source={{
-              uri: 'https://www.nicepng.com/png/detail/339-3395329_pawerup-member-10-off-for-all-retail-items.png',
+              uri: "https://1000logos.net/wp-content/uploads/2017/03/McDonalds-logo.png",
             }}
-            alt="Aang flying and surrounded by clouds"
-            height={100}
-            rounded="full"
-            width={100}
+            width={"100%"}
+            alt="Alternate Text"
+            size="xl"
           />
-        </HStack>
+          <Stack p="4" space={3}>
+            <Stack space={2}>
+              <Heading size="md" ml="-1">
+                10% off
+              </Heading>
+              <Text fontSize="xs" fontWeight="500" ml="-0.5" mt="-1">
+                Macdonalds
+              </Text>
+            </Stack>
+            <Text fontWeight="400">March 22 - 30 2021</Text>
+          </Stack>
+        </Box>
       </Box>
-    </NativeBaseProvider>
+    </View>
   );
 }
 
-export default PromotionCard
+export default PromotionCard;

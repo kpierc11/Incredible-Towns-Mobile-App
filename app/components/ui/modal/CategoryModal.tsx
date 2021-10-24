@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Modal, Pressable, View, StyleSheet, Text, Alert } from "react-native";
 
-function CategoryModal({ state }: any) {
-  const [modalVisible, setModalVisible] = useState(false);
+interface IModalState {
+  modalState?: boolean;
+}
+
+function CategoryModal({ modalState }: IModalState) {
+  const [modalVisible, setModalVisible] = useState(modalState);
 
   return (
     <Modal

@@ -12,6 +12,12 @@ import NewsArticleScreen from "../screens/NewsArticleScreen";
 import HeaderBar from "../ui/headerBar/HeaderBar";
 import Avatar from "../ui/avatar/Avatar";
 import AccountAvatar from "../ui/avatar/Avatar";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { NavigationContext } from "react-navigation";
+import { useWindowDimensions } from "react-native";
+import AccountDrawer from "./AccountDrawer";
+import { stringify } from "querystring";
+import HeaderTitle from "../ui/headerTitle/HeaderTitle";
 
 const DirectoryStack = createNativeStackNavigator();
 
@@ -51,12 +57,11 @@ function EventsStackScreen() {
 
 const Tab = createBottomTabNavigator();
 
-function AuthNavigation() {
+function TabNavigation() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        headerStyle: { backgroundColor: "#2b523d", height:120 },
-        headerTitleStyle: { color: "white" },
+        headerStyle: { height: 0 },
         tabBarIcon: ({ focused, color, size }) => {
           let iconName = "";
 
@@ -72,19 +77,62 @@ function AuthNavigation() {
             iconName = focused ? "business-outline" : "business-outline";
           }
 
+          title: {
+            route.name;
+          }
+
           // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: "#ce4927",
+        tabBarActiveBackgroundColor: "#ce49270",
         tabBarInactiveTintColor: "#2b523d",
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} options={{headerRight:(props) => <AccountAvatar {...props}/>}}/>
+      <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="News" component={NewsStackScreen} />
       <Tab.Screen name="Events" component={EventScreen} />
       <Tab.Screen name="Promotions" component={PromotionScreen} />
       <Tab.Screen name="Directory" component={DirectoryStackScreen} />
     </Tab.Navigator>
+  );
+}
+
+const Drawer = createDrawerNavigator();
+
+function AuthNavigation() {
+  const size: number = 5;
+  const dimensions = useWindowDimensions();
+  const isLargeScreen = dimensions.width >= 768;
+  return (
+    <Drawer.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        overlayColor: "transparent",
+        headerStyle: {
+          height: 125,
+          backgroundColor: "#2b523d",
+          shadowOffset: {
+            width: 0,
+            height: 0,
+          },
+          shadowOpacity: 0,
+          shadowRadius: 1,
+          shadowColor: "black",
+        },
+        headerTintColor: "white",
+        drawerIcon: ({ color = "#FFFFFF", size = 50 }) => (
+          <Ionicons name="menu-outline" size={size} color={color} />
+        ),
+      }}
+      drawerContent={(props) => <AccountDrawer {...props} />}
+    >
+      <Drawer.Screen
+        name="Incredible Towns"
+        component={TabNavigation}
+        options={{ headerTitle: (props) => <HeaderTitle></HeaderTitle> }}
+      />
+    </Drawer.Navigator>
   );
 }
 
