@@ -11,6 +11,10 @@ function NewsScreen({ navigation }: any) {
 
   const newsRef = firebaseConfig.firestore().collection("News").get();
 
+  useEffect(() => {
+    console.log(newsRef);
+  }, []);
+
   return (
     <ScrollView>
       <NewsCard

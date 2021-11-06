@@ -9,8 +9,13 @@ import {
   Center,
 } from "native-base";
 import React from "react";
+import { Linking } from "react-native";
 
-function UpcomingEventsCard() {
+interface Iprops {
+  link:string; 
+}
+
+function UpcomingEventsCard({link}:Iprops) {
   return (
 
       <Box
@@ -56,6 +61,7 @@ function UpcomingEventsCard() {
           <Text
             _light={{ color: "emerald.800" }}
             _dark={{ color: "emerald.300" }}
+            onPress={()=>{Linking.openURL(link ? link : '')}}
           >
             Find out more
           </Text>

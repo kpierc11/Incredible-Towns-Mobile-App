@@ -7,6 +7,7 @@ import {
   Input,
   ScrollView,
   useDisclose,
+  View,
   VStack,
 } from "native-base";
 import firebaseConfig from "../../firebase";
@@ -27,10 +28,11 @@ import { justifyContent } from "styled-system";
 function DirectoryScreen({ navigation, modalState }: any) {
   const [directoryCards, setDirectoryCards]: any = useState([]);
   const [isLoading, setLoading] = useState(true);
-  const [refreshing, setRefreshing] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclose();
   const [searchData, setSearchData] = useState("");
+  const [searchCategory, setCategory] = useState("");
+
+  let currentCategory = "";
 
   const categories = [
     "Accounting & Tax Services",
@@ -61,7 +63,18 @@ function DirectoryScreen({ navigation, modalState }: any) {
   ];
 
   const actionItems = categories.map((element, index) => {
-    return <Actionsheet.Item key={index}>{element}</Actionsheet.Item>;
+    return (
+      <Actionsheet.Item
+        key={index}
+        onPress={() => {
+          setCategory(element);
+          setLoading(true);
+          onClose();
+        }}
+      >
+        {element}
+      </Actionsheet.Item>
+    );
   });
 
   const styles = StyleSheet.create({
@@ -145,59 +158,62 @@ function DirectoryScreen({ navigation, modalState }: any) {
     },
   });
 
-  const businessRef = firebaseConfig
-    .firestore()
-    .collection("Business")
-    .orderBy("name");
-
   useEffect(() => {
+    const businessRef =
+      searchCategory != ""
+        ? firebaseConfig
+            .firestore()
+            .collection("Business")
+            .where("category", "==", searchCategory)
+        : firebaseConfig.firestore().collection("Business").orderBy("name");
+
     businessRef.get().then((snapshot) => {
       if (!snapshot.empty) {
         const data = snapshot.docs.map((doc) => {
           return (
-            <Pressable
-              key={doc.id}
-              delayLongPress={180}
-              onLongPress={() => {
-                navigation.navigate("Business", {
-                  image: doc.get("image"),
-                  name: doc.get("name"),
-                  description: doc.get("description"),
-                  location: doc.get("location"),
-                });
-              }}
-            >
-              <DirectoryCard
-                key={doc.get("name")}
-                uri={doc.get("image")}
-                heading={doc.get("name")}
-                text={doc.get("description")}
-              />
-            </Pressable>
+            <View key={doc.id}>
+              <Pressable
+                key={doc.id}
+                delayLongPress={180}
+                onLongPress={() => {
+                  navigation.navigate("Business", {
+                    image: doc.get("image"),
+                    name: doc.get("name"),
+                    description: doc.get("description"),
+                    location: doc.get("location"),
+                  });
+                }}
+              >
+                <DirectoryCard
+                  key={doc.get("name")}
+                  uri={doc.get("image")}
+                  heading={doc.get("name")}
+                  text={doc.get("description")}
+                />
+              </Pressable>
+            </View>
           );
         });
         setDirectoryCards(data);
         setLoading(false);
-        setRefreshing(false);
       } else {
         console.log("This document does not exist.");
       }
     });
-  }, []);
+  }, [searchCategory]);
 
   if (isLoading) {
-    return <Loading />;
+    return <Loading></Loading>;
   } else {
     return (
-      <ScrollView
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={() => setRefreshing(true)}
-          />
-        }
-      >
-        <VStack space={8} width="100%" marginTop="20px" marginBottom="20px">
+      <>
+        <VStack
+          space={8}
+          width="100%"
+          height="50px"
+          marginTop="20px"
+          marginBottom="10px"
+        >
           <Center flex={1}>
             <VStack width="90%" space={2}>
               <Input
@@ -223,6 +239,7 @@ function DirectoryScreen({ navigation, modalState }: any) {
                     size={6}
                     color="gray.400"
                     as={<MaterialIcons name="search" />}
+                    onPress={() => {}}
                   />
                 }
                 InputRightElement={
@@ -240,15 +257,21 @@ function DirectoryScreen({ navigation, modalState }: any) {
             </VStack>
           </Center>
         </VStack>
-        {directoryCards}
-        <Actionsheet isOpen={isOpen} onClose={onClose} size="full">
-          <Actionsheet.Content>
-            <Text style={{fontSize:15, paddingBottom:20}}>Categories</Text>
 
-            <ScrollView width={"100%"}>{actionItems}</ScrollView>
-          </Actionsheet.Content>
-        </Actionsheet>
-      </ScrollView>
+        <ScrollView>
+          {directoryCards}
+
+          <Actionsheet isOpen={isOpen} onClose={onClose} size="full">
+            <Actionsheet.Content>
+              <Text style={{ fontSize: 15, paddingBottom: 20 }}>
+                Categories
+              </Text>
+
+              <ScrollView width={"100%"}>{actionItems}</ScrollView>
+            </Actionsheet.Content>
+          </Actionsheet>
+        </ScrollView>
+      </>
     );
   }
 }

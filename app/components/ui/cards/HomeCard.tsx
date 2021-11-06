@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, Text, Center, Box, Stack, Heading, HStack } from "native-base";
 
-import { View, Button } from "react-native";
+import { View, Button, Linking } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 interface ICustomCard {
@@ -10,9 +10,10 @@ interface ICustomCard {
   text?: string;
   subText: string;
   buttonTitle?: string;
+  link?:string;
 }
 
-function HomeCard({ image, heading, text, subText, buttonTitle }: ICustomCard) {
+function HomeCard({ image, heading, text, subText, buttonTitle, link }: ICustomCard) {
   return (
     <Box
       rounded="lg"
@@ -52,8 +53,10 @@ function HomeCard({ image, heading, text, subText, buttonTitle }: ICustomCard) {
           <Text
             _light={{ color: "emerald.800" }}
             _dark={{ color: "emerald.300" }}
+            onPress={()=>{Linking.openURL(link ? link : '')}}
           >
            {buttonTitle}
+           
           </Text>
         </HStack>
 

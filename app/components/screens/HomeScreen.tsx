@@ -25,6 +25,7 @@ function HomeScreen() {
         }
         subText={"Directory"}
         buttonTitle={"See Directory"}
+        link={'https://tricities.incredibletowns.com/events'}
       ></HomeCard>
     </View>,
     <View style={{ padding: 20 }}>
@@ -36,6 +37,7 @@ function HomeScreen() {
         }
         subText={"Events"}
         buttonTitle={"Find Events"}
+        link={'https://tricities.incredibletowns.com/events/'}
       ></HomeCard>
     </View>,
     <View style={{ padding: 20 }}>
@@ -47,6 +49,7 @@ function HomeScreen() {
         }
         subText={"Marketing"}
         buttonTitle={"Reach More People"}
+        link={'https://tricities.incredibletowns.com/tri-cities-marketing'}
       ></HomeCard>
     </View>,
   ]);
@@ -86,9 +89,9 @@ function HomeScreen() {
           snapToAlignment={"center"}
           showsHorizontalScrollIndicator={false}
         >
-          <UpcomingEventsCard></UpcomingEventsCard>
-          <UpcomingEventsCard></UpcomingEventsCard>
-          <UpcomingEventsCard></UpcomingEventsCard>
+          <UpcomingEventsCard link={"https://www.meetup.com/Tri-Cities-TN-Business-Networking/"}></UpcomingEventsCard>
+          <UpcomingEventsCard link={"https://www.meetup.com/Tri-Cities-TN-Business-Networking/"}></UpcomingEventsCard>
+          <UpcomingEventsCard link={"https://www.meetup.com/Tri-Cities-TN-Business-Networking/"}></UpcomingEventsCard>
         </ScrollView>
 
         <Heading size={"md"} padding={5}>
