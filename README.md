@@ -1,2 +1,2 @@
 # Incredible-Towns-Mobile-App
-A mobile app for the incredible towns networking group 
+A social networking app in the works for a possible networking group. 
